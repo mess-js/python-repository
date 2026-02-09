@@ -1,0 +1,24 @@
+def add_setting(settings_dict,setting_pair):
+    """
+    Add a new setting to the settings dictionary
+    Args:
+    setting_dict: Dictionary containing current settings
+    setting_pair: Tupe containing(key,value) to add
+    Returns: 
+        String message indicating success of failute
+    Returns: 
+        String message indicating success of failute
+    """
+    #umpacking the tuple
+    key,value = setting_pair
+
+    #converting both to lowercase
+    key_lower = key.lower()
+    value_lower = str(value).lower() #coverts to str in case value not string
+
+    #to check whethere the key alr exists
+    if key_lower in setting_dict:
+        return f"setting '{key_lower}' already  exists. Cannot add a new setting with the same name."
+    else:
+        settings_dict[key_lower] = value_lower
+        return f"setting '{key_lower}' added with value '{value_lower}' successfully!"
