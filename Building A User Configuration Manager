@@ -5,9 +5,7 @@ def add_setting(settings_dict,setting_pair):
     setting_dict: Dictionary containing current settings
     setting_pair: Tupe containing(key,value) to add
     Returns: 
-        String message indicating success of failute
-    Returns: 
-        String message indicating success of failute
+        String message indicating success of failure
     """
     #umpacking the tuple
     key,value = setting_pair
