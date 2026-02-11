@@ -44,3 +44,23 @@ def update_setting(setting_dict,setting_pair):
         return f"Setting '{key_lower}' updated to '{value_lower}' successfully!"
     else:
         return f"Setting '{key_lower}' does not exist! Cannot update a non-existing setting."
+# stories 5 & 6
+
+def delete_setting(setting_dict,key):
+    """
+    deletes a setting from the settings dictionary
+    Args:
+
+    setting_dict : dictionary containing current settings
+    key: key to delete from dictionary
+
+    returns:
+    String message indicating whether the key was deleted or not
+    """
+    lower_key = key.lower() #convert key to lowercase
+
+    if lower_key in setting_dict: # check if the key exists
+        del setting_dict[lower_key] # Actually remove the key-value pair
+        return f"Setting '{lower_key}' deleted successfully!"
+    else:
+        return f"Setting not found!"
