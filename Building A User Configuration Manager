@@ -1,4 +1,4 @@
-def add_setting(settings_dict,setting_pair):
+def add_setting(setting_dict,setting_pair):
     """
     Add a new setting to the settings dictionary
     Args:
@@ -18,5 +18,29 @@ def add_setting(settings_dict,setting_pair):
     if key_lower in setting_dict:
         return f"setting '{key_lower}' already  exists. Cannot add a new setting with the same name."
     else:
-        settings_dict[key_lower] = value_lower
+        setting_dict[key_lower] = value_lower
         return f"setting '{key_lower}' added with value '{value_lower}' successfully!"
+
+#stories 3 and 4
+def update_setting(setting_dict,setting_pair):
+    """
+    update existing setting in the settings dictionary
+    setting_dict : dictionary containing current setting
+    setting_pair:Tupe containing(key,value) to update
+    Returns: 
+        String message indicating success or failure
+    """
+
+
+
+
+    key,value = setting_pair # unpacking the tuple
+    
+    key_lower = key.lower()
+    value_lower =str(value).lower() #converts to string in case not string
+
+    if key_lower in settings_dict:
+        settings_dict[key_lower] = value_lower
+        return f"Setting '{key_lower}' updated to '{value_lower}' successfully!"
+    else:
+        return f"Setting '{key_lower}' does not exist! Cannot update a non-existing setting."
