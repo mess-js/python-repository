@@ -1,73 +1,87 @@
-def add_setting(setting_dict,setting_pair):
+def add_setting(setting_dict, setting_pair):
     """
     Add a new setting to the settings dictionary
+    
     Args:
-    setting_dict: Dictionary containing current settings
-    setting_pair: Tupe containing(key,value) to add
-    Returns: 
-        String message indicating success of failure
-    """
-    #umpacking the tuple
-    key,value = setting_pair
-
-    #converting both to lowercase
-    key_lower = key.lower()
-    value_lower = str(value).lower() #coverts to str in case value not string
-
-    #to check whethere the key alr exists
-    if key_lower in setting_dict:
-        return f"setting '{key_lower}' already  exists. Cannot add a new setting with the same name."
-    else:
-        setting_dict[key_lower] = value_lower
-        return f"setting '{key_lower}' added with value '{value_lower}' successfully!"
-
-#stories 3 and 4
-def update_setting(setting_dict,setting_pair):
-    """
-    update existing setting in the settings dictionary
-    setting_dict : dictionary containing current setting
-    setting_pair:Tupe containing(key,value) to update
-    Returns: 
+        setting_dict: Dictionary containing current settings
+        setting_pair: Tuple containing (key, value) to add
+    
+    Returns:
         String message indicating success or failure
     """
+    # unpacking the tuple
+    key, value = setting_pair
+    # converting both to lowercase
+    key_lower = key.lower()
+    value_lower = str(value).lower()  # converts to str in case value not string
+    
+    # to check whether the key already exists
+    if key_lower in setting_dict:
+        return f"Setting '{key_lower}' already exists! Cannot add a new setting with this name."
+    else:
+        setting_dict[key_lower] = value_lower
+        return f"Setting '{key_lower}' added with value '{value_lower}' successfully!"
 
 
-
-
-    key,value = setting_pair # unpacking the tuple
+def update_setting(setting_dict, setting_pair):
+    """
+    Update existing setting in the settings dictionary
+    
+    Args:
+        setting_dict: Dictionary containing current settings
+        setting_pair: Tuple containing (key, value) to update
+    
+    Returns:
+        String message indicating success or failure
+    """
+    key, value = setting_pair  # unpacking the tuple
     
     key_lower = key.lower()
-    value_lower =str(value).lower() #converts to string in case not string
-
-    if key_lower in settings_dict:
-        settings_dict[key_lower] = value_lower
+    value_lower = str(value).lower()  # converts to string in case not string
+    
+    if key_lower in setting_dict:
+        setting_dict[key_lower] = value_lower
         return f"Setting '{key_lower}' updated to '{value_lower}' successfully!"
     else:
         return f"Setting '{key_lower}' does not exist! Cannot update a non-existing setting."
-# stories 5 & 6
 
-def delete_setting(setting_dict,key):
+
+def delete_setting(setting_dict, key):
     """
-    deletes a setting from the settings dictionary
+    Deletes a setting from the settings dictionary
+    
     Args:
-
-    setting_dict : dictionary containing current settings
-    key: key to delete from dictionary
-
-    returns:
-    String message indicating whether the key was deleted or not
+        setting_dict: Dictionary containing current settings
+        key: Key to delete from dictionary
+    
+    Returns:
+        String message indicating whether the key was deleted or not
     """
-    lower_key = key.lower() #convert key to lowercase
-
-    if lower_key in setting_dict: # check if the key exists
-        del setting_dict[lower_key] # Actually remove the key-value pair
+    lower_key = key.lower()  # convert key to lowercase
+    
+    if lower_key in setting_dict:  # check if the key exists
+        del setting_dict[lower_key]  # Actually remove the key-value pair
         return f"Setting '{lower_key}' deleted successfully!"
     else:
-        return f"Setting not found!"
-# stores 7 & 8
+        return "Setting not found!"
+
+
 def view_settings(setting_dict):
-    if setting_dict == []: #checking if dictionary of settings is empty
-        return f"No settings available."
+    """
+    View all settings in the settings dictionary
+    
+    Args:
+        setting_dict: Dictionary containing current settings
+    
+    Returns:
+        String displaying all settings or a message if no settings exist
+    """
+    if not setting_dict:
+        return "No settings available."
     else:
-        return f"Current User Settingsview_settings({'theme': 'dark', 'notifications': 'enabled', 'volume': 'high'}"
-test_settings = []
+        result = "Current User Settings:\n"  # on a new line
+        for key, value in setting_dict.items():
+            result += f"{key.capitalize()}: {value}\n"
+        return result  # ← Remove the rstrip, keep the trailing newline
+test_settings = {'theme': 'dark', 'notifications': 'enabled', 'volume': 'high'}
+print(view_settings(test_settings))
